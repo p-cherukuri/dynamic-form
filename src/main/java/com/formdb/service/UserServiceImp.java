@@ -27,6 +27,11 @@ public class UserServiceImp implements UserService {
         private BCryptPasswordEncoder bCryptPasswordEncoder;
 
         @Override
+        public User findUserByEmail(String email) {
+                return userRepository.findByEmail(email);
+        }
+
+        @Override
         public void saveUser(User user) {
                 user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
                 user.setActive(1);
