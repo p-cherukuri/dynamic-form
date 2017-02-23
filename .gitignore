@@ -11,6 +11,9 @@ target/
 
 ### IntelliJ IDEA ###
 .idea
+.mvn
+mvnw
+mvnw.cmd
 *.iws
 *.iml
 *.ipr
@@ -21,4 +24,6 @@ build/
 nbbuild/
 dist/
 nbdist/
-.nb-gradle/
+.nb-gradle/.mvn
+mvnw
+mvnw.cmd
