@@ -54,7 +54,7 @@ public class LoginController {
             modelAndView.setViewName("registration");
         } else {
             userService.saveUser(user);
-            modelAndView.addObject("successMessage", "User has sucessfully registered!");
+            modelAndView.addObject("successMessage", "User has successfully registered!");
             modelAndView.addObject("user", new User());
             modelAndView.setViewName("registration");
 
@@ -62,14 +62,14 @@ public class LoginController {
         return modelAndView;
     }
 
-    @RequestMapping(value="/index", method = RequestMethod.GET)
+    @RequestMapping(value="/admin/home", method = RequestMethod.GET)
     public ModelAndView home(){
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
         modelAndView.addObject("userName", "Welcome " + user.getFirstName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
         modelAndView.addObject("adminMessage","This is an admin database form");
-        modelAndView.setViewName("/index");
+        modelAndView.setViewName("/admin/home");
         return modelAndView;
     }
 
