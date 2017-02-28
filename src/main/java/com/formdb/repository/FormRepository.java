@@ -11,5 +11,5 @@ import com.formdb.model.Form;
 
 @Repository("formRepository")
 public interface FormRepository extends JpaRepository<Form, Long> {
-        Form findById(int formId);
+        Form findBySubmissionNum(int submissionNum);
 }

@@ -6,6 +6,6 @@ import com.formdb.model.Form;
  */
 
 public interface FormService {
-    public Form findFormById(int formId);
-    public void saveForm(Form form, int newRandomId);
+    public Form findFormBySubmissionNum(int submissionNum);
+    public void saveForm(Form form, int newRandomNum);
 }

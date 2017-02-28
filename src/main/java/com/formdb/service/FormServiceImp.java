@@ -16,13 +16,13 @@ public class FormServiceImp implements FormService {
         private FormRepository formRepository;
 
         @Override
-        public Form findFormById(int formId) {
-            return formRepository.findById(formId);
+        public Form findFormBySubmissionNum(int submissionNum) {
+            return formRepository.findBySubmissionNum(submissionNum);
         }
 
         @Override
-        public void saveForm(Form form, int newRandomId) {
-            form.setFormId(newRandomId);
+        public void saveForm(Form form, int newRandomNum) {
+            form.setSubmissionNum(newRandomNum);
             formRepository.save(form);
         }
 }
