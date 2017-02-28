@@ -85,14 +85,14 @@ public class LoginController {
     public ModelAndView submitNewForm(Form form) {
         ModelAndView modelAndView = new ModelAndView();
         Random rand = new Random();
-        int newRandomId = rand.nextInt(9999);
-        Form formIdExists = formService.findFormById(newRandomId);
-        while(formIdExists != null) {
-            newRandomId = rand.nextInt(9999);
-            formIdExists = formService.findFormById(newRandomId);
+        int newRandomNum = rand.nextInt(9999);
+        Form formExists = formService.findFormBySubmissionNum(newRandomNum);
+        while(formExists != null) {
+            newRandomNum = rand.nextInt(9999);
+            formExists = formService.findFormBySubmissionNum(newRandomNum);
         }
-        formService.saveForm(form, newRandomId);
-        modelAndView.addObject("submissionMessage","Form submission success! Please note your submission ID: " + newRandomId);
+        formService.saveForm(form, newRandomNum);
+        modelAndView.addObject("submissionMessage","Form submission success! Please note your submission ID: " + newRandomNum);
         modelAndView.addObject("form", new Form());
         modelAndView.setViewName("/admin/home");
         return modelAndView;

@@ -18,8 +18,10 @@ public class Form {
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         @Column(name = "form_id")
-        private int formId;
+        private int id;
 
+        @Column(name = "submission_num")
+        private int submissionNum;
         //Tab1_Header
         @Column(name = "tab1_row1")
         private String tab1Row1;
@@ -106,8 +108,11 @@ public class Form {
         @Column(name = "tab3_row19")
         private String tab3Row19;
 
-        public int getFormId() { return formId; }
-        public void setFormId(int formId) { this.formId = formId; }
+        public int getId() { return id; }
+        public void setId(int id) { this.id = id; }
+
+        public int getSubmissionNum() { return submissionNum; }
+        public void setSubmissionNum(int submissionNum) { this.submissionNum = submissionNum; }
 
         //Tab1_Header
         public String getTab1Row1() { return tab1Row1; }
@@ -162,7 +167,7 @@ public class Form {
         public String getTab2Row14() { return tab2Row14; }
         public void setTab2Row14(String tab2Row14) { this.tab2Row14 = tab2Row14; }
 
-        public String getTab2Row15() { return tab2Row15 }
+        public String getTab2Row15() { return tab2Row15; }
         public void setTab2Row15(String tab2Row15) { this.tab2Row15 = tab2Row15; }
 
         public String getTab2Row16() { return tab2Row16; }
