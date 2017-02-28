@@ -1,0 +1,19 @@
+{
+  "name": "springbootform",
+  "homepage": "https://github.com/p-cherukuri/springbootform",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/main/resources/static/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7"
+  }
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
+
+    <title>formdb</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.17/angular2-all.umd.min.js"></script>
+
+    <!--<link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.1/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.1/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link href="../css/app.css" th:href="@{/css/app.css}" rel="stylesheet" media="screen"/>-->
+</head>
+<body>
+    <div class="container">
+
+        <form th:action="@{/logout}" method="get">
+            <button class="btn btn-md btn-danger btn-block" name="registration"
+                    type="Submit">Logout</button>
+        </form>
+
+        <div class="panel-group" style="margin-top:40px">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span th:utext="${userName}"></span>
+                </div>
+                <!--<div class="panel-body">
+                    <img th:src="@{/images/forest.jpg}" class="img-responsive center-block" width="400" height="400" alt="Beer" />
+                </div>
+                <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>-->
+            </div>
+
+            <!-- Form begin -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <form autocomplete="off" action="#" th:action="@{/admin/home}"
+                              th:object="${form}" method="post" class="form-horizontal"
+                              role="form">
+                            <h2>Fill Form</h2>
+                            <div class="form-group">
+                                <div class="col-sm-9">
+                                    <label th:if="${#fields.hasErrors('tab1Row1')}" th:errors="*{tab1Row1}"
+                                           class="validation-message"></label>
+                                    <input type="text" th:field="*{tab1Row1}" placeholder="tab1Row1"
+                                           class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-9">
+                                    <label	th:if="${#fields.hasErrors('tab1Row2')}" th:errors="*{tab1Row2}"
+                                              class="validation-message"></label>
+                                    <input type="text" th:field="*{tab1Row2}"
+                                           placeholder="tab1Row2" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-9">
+                                    <label	th:if="${#fields.hasErrors('tab1Row3')}" th:errors="*{tab1Row3}"
+                                              class="validation-message"></label>
+                                    <input type="text" th:field="*{tab1Row3}"
+                                           placeholder="tab1Row3" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-9">
+                                    <button type="submit" class="btn btn-primary btn-block">Submit Form</button>
+                                </div>
+                            </div>
+
+                            <span th:utext="${submissionMessage}"></span>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Form end -->
+        </div>
+
+    </div>
+</body>
+</html>
