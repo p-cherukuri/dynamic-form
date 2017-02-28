@@ -82,7 +82,7 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/admin/home", method = RequestMethod.POST)
-    public  ModelAndView submitNewForm(Form form) {
+    public ModelAndView submitNewForm(Form form) {
         ModelAndView modelAndView = new ModelAndView();
         Random rand = new Random();
         int newRandomId = rand.nextInt(9999);
@@ -94,6 +94,8 @@ public class LoginController {
         formService.saveForm(form, newRandomId);
         modelAndView.addObject("submissionMessage","Form submission success! Please note your submission ID: " + newRandomId);
         modelAndView.addObject("form", new Form());
+        modelAndView.setViewName("/admin/home");
+        return modelAndView;
     }
 
 
