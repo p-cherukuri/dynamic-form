@@ -1,5 +1,179 @@
+/* Font */
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+
+/* Basic reset */
+* {margin: 0; padding: 0;}
+
+html {
+	height: 100%;
+	/* Image only BG fallback */
+	background: url('http://thecodeplayer.com/uploads/media/gs.png');
+	/* background = gradient + image pattern combo */
+	background:
+		linear-gradient(rgba(196, 102, 0, 0.2), rgba(155, 89, 182, 0.2)),
+		url('http://thecodeplayer.com/uploads/media/gs.png');
+}
+
+body {
+	font-family: montserrat, arial, verdana;
+}
+/* Form style */
+#multiform {
+	width: 400px;
+	margin: 50px auto;
+	text-align: center;
+	position: relative;
+}
+#multiform fieldset {
+	background: white;
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	padding: 20px 30px;
+
+	box-sizing: border-box;
+	width: 80%;
+	margin: 0 10%;
+
+	/* Stack fieldsets above each other */
+	position: absolute;
+}
+/* Hide all but 1st fieldset */
+#multiform fieldset:not(:first-of-type) {
+	display: none;
+}
+/* Inputs */
+#multiform input, #multiform textarea {
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	font-family: montserrat;
+	color: #2C3E50;
+	font-size: 13px;
+}
+/* Buttons */
+#multiform .action-button {
+	width: 100px;
+	background: #203ca3;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 1px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+#multiform .action-button:hover, #multiform .action-button:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+/* Titles */
+.tab-title {
+	font-size: 15px;
+	text-transform: uppercase;
+	color: #2C3E50;
+	margin-bottom: 10px;
+}
+.tab-subtitle {
+	font-weight: normal;
+	font-size: 13px;
+	color: #666;
+	margin-bottom: 20px;
+}
+/* Progress Bar */
+#progressbar {
+	margin-bottom: 30px;
+	overflow: hidden;
+	/* CSS counters for step numbers */
+	counter-reset: step;
+}
+#progressbar li {
+	list-style-type: none;
+	color: white;
+	text-transform: uppercase;
+	font-size: 9px;
+	width: 33.33%;
+	float: left;
+	position: relative;
+}
+#progressbar li:before {
+	content: counter(step);
+	counter-increment: step;
+	width: 20px;
+	line-height: 20px;
+	display: block;
+	font-size: 10px;
+	color: #333;
+	background: white;
+	border-radius: 3px;
+	margin: 0 auto 5px auto;
+}
+/* Progress step connectors */
+#progressbar li:after {
+	content: '';
+	width: 100%;
+	height: 2px;
+	background: white;
+	position: absolute;
+	left: -50%;
+	top: 9px;
+	z-index: -1; /* behind numbers */
+}
+#progressbar li:first-child:after {
+	/* connector not necessary before 1st step */
+	content: none;
+}
+/* Active and finished steps are green */
+/* Step number and previous connector are green */
+#progressbar li.active:before,  #progressbar li.active:after{
+	background: #203ca3;
+	color: white;
+}
+
 .admin-message-text {
 	font-style: normal;
 	font-size: 22px;
 	color: #004080;
 }
+
+.logout-btn {
+    border-radius: 8px;
+    width: 100%;
+    background-color:red;
+    font-size: 25px;
+    color: white;
+}
+
+.welcome {
+    border-style: solid;
+    background-color: #203ca3;
+    color: #d2d5dd;
+}
+
+.styled-select {
+   background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+   height: 29px;
+   overflow: hidden;
+   width: 240px;
+}
+
+.styled-select select {
+   background: transparent;
+   border: none;
+   font-size: 14px;
+   height: 29px;
+   padding: 5px; /* If you add too much padding here, the options won't show in IE */
+   width: 268px;
+}
+
+.semi-square {
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+}
+
+.deepblue { background-color: #203ca3; }
+
+.deepblue select    { color: #fff; }

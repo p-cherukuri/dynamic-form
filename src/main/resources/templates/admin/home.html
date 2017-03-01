@@ -6,26 +6,37 @@
 
     <title>formdb</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/bower_components/jquery-dropdown/jquery.dropdown.min.css}" />
+    <!--<link rel="stylesheet" type="text/css" th:href="@{/bower_components/bootstrap/dist/css/bootstrap.min.css}" />
+    <script th:src="@{/bower_components/bootstrap/dist/js/bootstrap.min.js}" type="text/javascript"></script>-->
+
+    <!--<link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/3.1.1/jquery.min.js"
+            th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <script src="http://cdn.jsdelivr.net/webjars/jquery-easing/1.3/jquery.easing.1.3.min.js"
+            th:src="@{/webjars/jquery-easing/1.3/jquery.easing.1.3.min.js}"></script>
     <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.17/angular2-all.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.17/angular2-all.umd.min.js"></script>-->
 
-    <!--<link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.1/css/bootstrap.min.css"
+    <!--<link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
           th:href="@{/webjars/bootstrap/3.3.1/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
     <link href="../css/app.css" th:href="@{/css/app.css}" rel="stylesheet" media="screen"/>-->
 </head>
 <body>
-    <div class="container">
+    <div>
 
         <form th:action="@{/logout}" method="get">
-            <button class="btn btn-md btn-danger btn-block" name="registration"
+            <button class="logout-btn" name="registration"
                     type="Submit">Logout</button>
         </form>
 
-        <div class="panel-group" style="margin-top:40px">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
+        <div>
+            <div class="welcome">
+                <div>
                     <span th:utext="${userName}"></span>
                 </div>
                 <!--<div class="panel-body">
@@ -35,47 +46,456 @@
             </div>
 
             <!-- Form begin -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3">
-                        <form autocomplete="off" action="#" th:action="@{/admin/home}"
-                              th:object="${form}" method="post" class="form-horizontal"
+            <div>
+                <div>
+                    <div>
+                        <form id="multiform" autocomplete="off" action="#" th:action="@{/admin/home}"
+                              th:object="${form}" method="post"
                               role="form">
-                            <h2>Fill Form</h2>
-                            <div class="form-group">
-                                <div class="col-sm-9">
-                                    <label th:if="${#fields.hasErrors('tab1Row1')}" th:errors="*{tab1Row1}"
-                                           class="validation-message"></label>
-                                    <input type="text" th:field="*{tab1Row1}" placeholder="tab1Row1"
-                                           class="form-control" />
-                                </div>
-                            </div>
+                            <!-- Progress Bar -->
+                            <ul id="progressbar">
+                                <li class="active">Tab1_Header</li>
+                                <li>Tab2_Header</li>
+                                <li>Tab3_Header</li>
+                            </ul>
+                            <!-- Tab1 Fields -->
+                            <fieldset>
+                                <h2 class="tab-title">Tab1_Header</h2>
 
-                            <div class="form-group">
-                                <div class="col-sm-9">
-                                    <label	th:if="${#fields.hasErrors('tab1Row2')}" th:errors="*{tab1Row2}"
-                                              class="validation-message"></label>
-                                    <input type="text" th:field="*{tab1Row2}"
-                                           placeholder="tab1Row2" class="form-control" />
+                                <div >
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab1Row1')}" th:errors="*{tab1Row1}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab1Row1}" placeholder="tab1Row1"
+                                               />
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                <div class="col-sm-9">
-                                    <label	th:if="${#fields.hasErrors('tab1Row3')}" th:errors="*{tab1Row3}"
-                                              class="validation-message"></label>
-                                    <input type="text" th:field="*{tab1Row3}"
-                                           placeholder="tab1Row3" class="form-control" />
+                                <div>
+                                    <div>
+                                        <label	th:if="${#fields.hasErrors('tab1Row2')}" th:errors="*{tab1Row2}"
+                                                  class="validation-message"></label>
+                                        <input type="text" th:field="*{tab1Row2}"
+                                               placeholder="tab1Row2" />
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                <div class="col-sm-9">
-                                    <button type="submit" class="btn btn-primary btn-block">Submit Form</button>
+                                <div>
+                                    <div>
+                                        <label	th:if="${#fields.hasErrors('tab1Row3')}" th:errors="*{tab1Row3}"
+                                                  class="validation-message"></label>
+                                        <input type="text" th:field="*{tab1Row3}"
+                                               placeholder="tab1Row3" />
+                                    </div>
                                 </div>
-                            </div>
 
-                            <span th:utext="${submissionMessage}"></span>
+                                <input type="button" name="next" class="next action-button" value="Next" />
+                                <div>
+                                    <span th:utext="${submissionMessage}"></span>
+                                </div>
+                            </fieldset>
+
+                            <!-- Tab2 Fields -->
+                            <fieldset>
+                                <h2 class="tab-title">Tab2_Header</h2>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab2Row1')}" th:errors="*{tab2Row1}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab2Row1}" placeholder="tab2Row1"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab2Row2')}" th:errors="*{tab2Row2}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab2Row2}" placeholder="tab2Row2"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="styled-select semi-square deepblue">
+                                        <label th:if="${#fields.hasErrors('tab2Row3')}" th:errors="*{tab2Row3}"
+                                               class="validation-message"></label>
+                                        <select name="tab2Row3_LIST" th:field="*{tab2Row3}" placeholder="tab2Row3_LIST">
+                                            <option value="tab2Row3_LIST1">tab2Row3_LIST1</option>
+                                            <option value="tab2Row3_LIST2">tab2Row3_LIST2</option>
+                                            <option value="tab2Row3_LIST3">tab2Row3_LIST3</option>
+                                            <option value="tab2Row3_LIST4">tab2Row3_LIST4</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab2Row4')}" th:errors="*{tab2Row4}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab2Row4}" placeholder="tab2Row4"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab2Row5')}" th:errors="*{tab2Row5}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab2Row5}" placeholder="tab2Row5"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab2Row6')}" th:errors="*{tab2Row6}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab2Row6}" placeholder="tab2Row6"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab2Row7')}" th:errors="*{tab2Row7}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab2Row7}" placeholder="tab2Row7"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab2Row8')}" th:errors="*{tab2Row8}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab2Row8}" placeholder="tab2Row8"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab2Row9')}" th:errors="*{tab2Row9}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab2Row9}" placeholder="tab2Row9"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab2Row10')}" th:errors="*{tab2Row10}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab2Row10}" placeholder="tab2Row10"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab2Row11')}" th:errors="*{tab2Row11}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab2Row11}" placeholder="tab2Row11"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab2Row12')}" th:errors="*{tab2Row12}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab2Row12}" placeholder="tab2Row12"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab2Row13')}" th:errors="*{tab2Row13}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab2Row13}" placeholder="tab2Row13"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab2Row14')}" th:errors="*{tab2Row14}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab2Row14}" placeholder="tab2Row14"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab2Row15')}" th:errors="*{tab2Row15}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab2Row15}" placeholder="tab2Row15"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab2Row16')}" th:errors="*{tab2Row16}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab2Row16}" placeholder="tab2Row16"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab2Row17')}" th:errors="*{tab2Row17}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab2Row17}" placeholder="tab2Row17"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab2Row18')}" th:errors="*{tab2Row18}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab2Row18}" placeholder="tab2Row18"
+                                                />
+                                    </div>
+                                </div>
+
+                                <input type="button" name="previous" class="previous action-button" value="Previous" />
+                                <input type="button" name="next" class="next action-button" value="Next" />
+                            </fieldset>
+
+                            <fieldset>
+                                <h2 class="tab-title">Tab3_Header</h2>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab3Row1')}" th:errors="*{tab3Row1}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab3Row1}" placeholder="tab3Row1"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="styled-select semi-square deepblue">
+                                        <label th:if="${#fields.hasErrors('tab3Row2')}" th:errors="*{tab3Row2}"
+                                               class="validation-message"></label>
+                                        <select name="tab3Row2_LIST" th:field="*{tab3Row2}" placeholder="tab3Row2_LIST">
+                                            <option value="tab3Row2_LIST1">tab3Row2_LIST1</option>
+                                            <option value="tab3Row2_LIST2">tab3Row2_LIST2</option>
+                                            <option value="tab3Row2_LIST3">tab3Row2_LIST3</option>
+                                            <option value="tab3Row2_LIST4">tab3Row2_LIST4</option>
+                                            <option value="tab3Row2_LIST5">tab3Row2_LIST5</option>
+                                            <option value="tab3Row2_LIST6">tab3Row2_LIST6</option>
+                                            <option value="tab3Row2_LIST7">tab3Row2_LIST7</option>
+                                            <option value="tab3Row2_LIST8">tab3Row2_LIST8</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab3Row3')}" th:errors="*{tab3Row3}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab3Row3}" placeholder="tab3Row3"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="styled-select semi-square deepblue">
+                                        <label th:if="${#fields.hasErrors('tab3Row4')}" th:errors="*{tab3Row4}"
+                                               class="validation-message"></label>
+                                        <select name="tab3Row4_LIST" th:field="*{tab3Row4}" placeholder="tab3Row4_LIST">
+                                            <option value="tab3Row4_LIST1">tab3Row4_LIST1</option>
+                                            <option value="tab3Row4_LIST2">tab3Row4_LIST2</option>
+                                            <option value="tab3Row4_LIST3">tab3Row4_LIST3</option>
+                                            <option value="tab3Row4_LIST4">tab3Row4_LIST4</option>
+                                            <option value="tab3Row4_LIST5">tab3Row4_LIST5</option>
+                                            <option value="tab3Row4_LIST6">tab3Row4_LIST6</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="styled-select semi-square deepblue">
+                                        <label th:if="${#fields.hasErrors('tab3Row5')}" th:errors="*{tab3Row5}"
+                                               class="validation-message"></label>
+                                        <select name="tab3Row5_LIST" th:field="*{tab3Row5}" placeholder="tab3Row5_LIST">
+                                            <option value="tab3Row5_LIST1">tab3Row5_LIST1</option>
+                                            <option value="tab3Row5_LIST2">tab3Row5_LIST2</option>
+                                            <option value="tab3Row5_LIST3">tab3Row5_LIST3</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab3Row6')}" th:errors="*{tab3Row6}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab3Row6}" placeholder="tab3Row6"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab3Row7')}" th:errors="*{tab3Row7}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab3Row7}" placeholder="tab3Row7"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab3Row8')}" th:errors="*{tab3Row8}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab3Row8}" placeholder="tab3Row8"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab3Row9')}" th:errors="*{tab3Row9}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab3Row9}" placeholder="tab3Row9"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab3Row10')}" th:errors="*{tab3Row10}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab3Row10}" placeholder="tab3Row10"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab3Row11')}" th:errors="*{tab3Row11}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab3Row11}" placeholder="tab3Row11"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="styled-select semi-square deepblue">
+                                        <label th:if="${#fields.hasErrors('tab3Row12')}" th:errors="*{tab3Row12}"
+                                               class="validation-message"></label>
+                                        <select name="tab3Row12_LIST" th:field="*{tab3Row12}" placeholder="tab3Row12_LIST">
+                                            <option value="tab3Row12_LIST1">tab3Row12_LIST1</option>
+                                            <option value="tab3Row12_LIST2">tab3Row12_LIST2</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab3Row13')}" th:errors="*{tab3Row13}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab3Row13}" placeholder="tab3Row13"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab3Row14')}" th:errors="*{tab3Row14}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab3Row14}" placeholder="tab3Row14"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab3Row15')}" th:errors="*{tab3Row15}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab3Row15}" placeholder="tab3Row15"
+                                                />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="styled-select semi-square deepblue">
+                                        <label th:if="${#fields.hasErrors('tab3Row16')}" th:errors="*{tab3Row16}"
+                                               class="validation-message"></label>
+                                        <select name="tab3Row16_LIST" th:field="*{tab3Row16}" placeholder="tab3Row16_LIST">
+                                            <option value="tab3Row16_LIST1">tab3Row16_LIST1</option>
+                                            <option value="tab3Row16_LIST2">tab3Row16_LIST2</option>
+                                            <option value="tab3Row16_LIST3">tab3Row16_LIST3</option>
+                                            <option value="tab3Row16_LIST4">tab3Row16_LIST4</option>
+                                            <option value="tab3Row16_LIST5">tab3Row16_LIST5</option>
+                                            <option value="tab3Row16_LIST6">tab3Row16_LIST6</option>
+                                            <option value="tab3Row16_LIST7">tab3Row16_LIST7</option>
+                                            <option value="tab3Row16_LIST8">tab3Row16_LIST8</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="styled-select semi-square deepblue">
+                                        <label th:if="${#fields.hasErrors('tab3Row17')}" th:errors="*{tab3Row17}"
+                                               class="validation-message"></label>
+                                        <select name="tab3Row17_LIST" th:field="*{tab3Row17}" placeholder="tab3Row17_LIST">
+                                            <option value="tab3Row17_LIST1">tab3Row17_LIST1</option>
+                                            <option value="tab3Row17_LIST2">tab3Row17_LIST2</option>
+                                            <option value="tab3Row17_LIST3">tab3Row17_LIST3</option>
+                                            <option value="tab3Row17_LIST4">tab3Row17_LIST4</option>
+                                            <option value="tab3Row17_LIST5">tab3Row17_LIST5</option>
+                                            <option value="tab3Row17_LIST6">tab3Row17_LIST6</option>
+                                            <option value="tab3Row17_LIST7">tab3Row17_LIST7</option>
+                                            <option value="tab3Row17_LIST8">tab3Row17_LIST8</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="styled-select semi-square deepblue">
+                                        <label th:if="${#fields.hasErrors('tab3Row18')}" th:errors="*{tab3Row18}"
+                                               class="validation-message"></label>
+                                        <select name="tab3Row18_LIST" th:field="*{tab3Row18}" placeholder="tab3Row18_LIST">
+                                            <option value="tab3Row18_LIST1">tab3Row18_LIST1</option>
+                                            <option value="tab3Row18_LIST2">tab3Row18_LIST2</option>
+                                            <option value="tab3Row18_LIST3">tab3Row18_LIST3</option>
+                                            <option value="tab3Row18_LIST4">tab3Row18_LIST4</option>
+                                            <option value="tab3Row18_LIST5">tab3Row18_LIST5</option>
+                                            <option value="tab3Row18_LIST6">tab3Row18_LIST6</option>
+                                            <option value="tab3Row18_LIST7">tab3Row18_LIST7</option>
+                                            <option value="tab3Row18_LIST8">tab3Row18_LIST8</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <label th:if="${#fields.hasErrors('tab3Row19')}" th:errors="*{tab3Row19}"
+                                               class="validation-message"></label>
+                                        <input type="text" th:field="*{tab3Row19}" placeholder="tab3Row19"
+                                                />
+                                    </div>
+                                </div>
+
+
+                                        <input type="button" name="previous" class="previous action-button" value="Previous" />
+                                        <button type="submit" class="action-button">Submit Form</button>
+
+                            </fieldset>
+
+
+
+
+
 
 
                         </form>
@@ -86,5 +506,90 @@
         </div>
 
     </div>
+
+    <script th:src="@{/bower_components/jquery/dist/jquery.min.js}" type="text/javascript"></script>
+    <script th:src="@{/bower_components/jquery.easing/js/jquery.easing.min.js}" type="text/javascript"></script>
+    <script th:src="@{/bower_components/jquery-dropdown/jquery.dropdown.min.js}" type="text/javascript"></script>
+    <script>
+    //jQuery time
+var current_fs, next_fs, previous_fs; //fieldsets
+var left, opacity, scale; //fieldset properties which we will animate
+var animating; //flag to prevent quick multi-click glitches
+
+$(".next").click(function(){
+	if(animating) return false;
+	animating = true;
+
+	current_fs = $(this).parent();
+	next_fs = $(this).parent().next();
+
+	//activate next step on progressbar using the index of next_fs
+	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+	//show the next fieldset
+	next_fs.show();
+	//hide the current fieldset with style
+	current_fs.animate({opacity: 0}, {
+		step: function(now, mx) {
+			//as the opacity of current_fs reduces to 0 - stored in "now"
+			//1. scale current_fs down to 80%
+			scale = 1 - (1 - now) * 0.2;
+			//2. bring next_fs from the right(50%)
+			left = (now * 50)+"%";
+			//3. increase opacity of next_fs to 1 as it moves in
+			opacity = 1 - now;
+			current_fs.css({'transform': 'scale('+scale+')'});
+			next_fs.css({'left': left, 'opacity': opacity});
+		},
+		duration: 800,
+		complete: function(){
+			current_fs.hide();
+			animating = false;
+		},
+		//this comes from the custom easing plugin
+		easing: 'easeInOutBack'
+	});
+});
+
+$(".previous").click(function(){
+	if(animating) return false;
+	animating = true;
+
+	current_fs = $(this).parent();
+	previous_fs = $(this).parent().prev();
+
+	//de-activate current step on progressbar
+	$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+	//show the previous fieldset
+	previous_fs.show();
+	//hide the current fieldset with style
+	current_fs.animate({opacity: 0}, {
+		step: function(now, mx) {
+			//as the opacity of current_fs reduces to 0 - stored in "now"
+			//1. scale previous_fs from 80% to 100%
+			scale = 0.8 + (1 - now) * 0.2;
+			//2. take current_fs to the right(50%) - from 0%
+			left = ((1-now) * 50)+"%";
+			//3. increase opacity of previous_fs to 1 as it moves in
+			opacity = 1 - now;
+			current_fs.css({'left': left});
+			previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
+		},
+		duration: 800,
+		complete: function(){
+			current_fs.hide();
+			animating = false;
+		},
+		//this comes from the custom easing plugin
+		easing: 'easeInOutBack'
+	});
+});
+
+/* $(".submit").click(function(){
+	return false;
+}) */
+</script>
 </body>
+
 </html>
